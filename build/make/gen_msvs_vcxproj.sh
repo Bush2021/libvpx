@@ -180,7 +180,7 @@ for opt in "$@"; do
         --ver=*)
             vs_ver="$optval"
             case "$optval" in
-                1[4-7])
+                1[4-8])
                 ;;
                 *) die Unrecognized Visual Studio Version in $opt
                 ;;
@@ -363,6 +363,9 @@ generate_vcxproj() {
                 fi
                 if [ "$vs_ver" = "17" ]; then
                     tag_content PlatformToolset v143
+                fi
+                if [ "$vs_ver" = "18" ]; then
+                    tag_content PlatformToolset v145
                 fi
             fi
             tag_content CharacterSet Unicode
